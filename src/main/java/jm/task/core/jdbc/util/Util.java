@@ -9,7 +9,7 @@ public class Util {
     // реализуйте настройку соеденения с БД
     final static String URL = "jdbc:mysql://localhost:3306/newdbtest";
     final static String username = "root";
-    final static String password = "79520Igoryani4";
+    final static String password = "";
 
     public static void main(String[] args) {
 //        System.out.println("Loading driver ...");
