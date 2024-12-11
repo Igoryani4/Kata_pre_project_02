@@ -18,7 +18,7 @@ public class Util {
     final static String URL = "jdbc:mysql://localhost:3306/newdbtest?useSSL=false";
     final static String DRIVER = "com.mysql.cj.jdbc.Driver";
     final static String USERNAME = "root";
-    final static String PASSWORD = "79520Igoryani4";
+    final static String PASSWORD = "";
 
     public static void main(String[] args) {
 //        System.out.println("Loading driver ...");
