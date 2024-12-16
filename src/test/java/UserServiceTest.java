@@ -1,4 +1,3 @@
-import jm.task.core.jdbc.dao.UserDao;
 import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
@@ -22,8 +21,7 @@ public class UserServiceTest {
         try {
             userDao.dropUsersTable();
             userDao.dropUsersTable();
-//            userService.dropUsersTable();
-//            userService.dropUsersTable();
+
         } catch (Exception e) {
             Assert.fail("При тестировании удаления таблицы произошло исключение\n" + e);
         }
@@ -34,8 +32,7 @@ public class UserServiceTest {
         try {
             userDao.dropUsersTable();
             userDao.createUsersTable();
-//            userService.dropUsersTable();
-//            userService.createUsersTable();
+
         } catch (Exception e) {
             Assert.fail("При тестировании создания таблицы пользователей произошло исключение\n" + e.getMessage());
         }
@@ -44,9 +41,7 @@ public class UserServiceTest {
     @Test
     public void saveUser() {
         try {
-//            userService.dropUsersTable();
-//            userService.createUsersTable();
-//            userService.saveUser(testName, testLastName, testAge);
+
             userDao.dropUsersTable();
             userDao.createUsersTable();
             userDao.saveUser(testName, testLastName, testAge);
@@ -69,10 +64,6 @@ public class UserServiceTest {
     @Test
     public void removeUserById() {
         try {
-//            userService.dropUsersTable();
-//            userService.createUsersTable();
-//            userService.saveUser(testName, testLastName, testAge);
-//            userService.removeUserById(1L);
             userDao.dropUsersTable();
             userDao.createUsersTable();
             userDao.saveUser(testName, testLastName, testAge);
@@ -85,10 +76,6 @@ public class UserServiceTest {
     @Test
     public void getAllUsers() {
         try {
-//            userService.dropUsersTable();
-//            userService.createUsersTable();
-//            userService.saveUser(testName, testLastName, testAge);
-//            List<User> userList = userService.getAllUsers();
             userDao.dropUsersTable();
             userDao.createUsersTable();
             userService.saveUser(testName, testLastName, testAge);
@@ -105,16 +92,12 @@ public class UserServiceTest {
     @Test
     public void cleanUsersTable() {
         try {
-//            userService.dropUsersTable();
-//            userService.createUsersTable();
-//            userService.saveUser(testName, testLastName, testAge);
-//            userService.cleanUsersTable();
             userDao.dropUsersTable();
             userDao.createUsersTable();
             userDao.saveUser(testName, testLastName, testAge);
             userDao.cleanUsersTable();
 
-            if (userDao.getAllUsers().size() != 0) {
+            if (!userDao.getAllUsers().isEmpty()) {
                 Assert.fail("Метод очищения таблицы пользователей реализован не корректно");
             }
         } catch (Exception e) {

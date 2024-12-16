@@ -7,12 +7,10 @@ import jm.task.core.jdbc.util.Util;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-
-
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
-    public UserDaoHibernateImpl() {
+    public UserDaoHibernateImpl() { //this is default construction
 
     }
 
@@ -27,7 +25,7 @@ public class UserDaoHibernateImpl implements UserDao {
                 "name VARCHAR(50) NOT NULL, lastName VARCHAR(50) NOT NULL, " +
                 "age TINYINT NOT NULL)";
 
-        Query query = session.createSQLQuery(sql).addEntity(User.class);
+        Query <?> query = session.createSQLQuery(sql).addEntity(User.class);
         query.executeUpdate();
         transaction.commit();
         session.close();
@@ -42,7 +40,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
         String sql = "DROP TABLE IF EXISTS users";
 
-        Query query = session.createSQLQuery(sql).addEntity(User.class);
+        Query <?> query = session.createSQLQuery(sql).addEntity(User.class);
         query.executeUpdate();
         transaction.commit();
         session.close();
@@ -55,7 +53,7 @@ public class UserDaoHibernateImpl implements UserDao {
         String insertUser = "INSERT users (name, lastName, age) VALUES ("
                 +"'"+ name + "', '" + lastName + "', " + age + ")";
 
-        Query query = session.createSQLQuery(insertUser).addEntity(User.class);
+        Query <?> query = session.createSQLQuery(insertUser).addEntity(User.class);
         query.executeUpdate();
         transaction.commit();
         session.close();
@@ -68,7 +66,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Transaction transaction = session.beginTransaction();
         String sql = "DELETE FROM users WHERE id = '" + id + "'";
 
-        Query query = session.createSQLQuery(sql).addEntity(User.class);
+        Query <?> query = session.createSQLQuery(sql).addEntity(User.class);
         query.executeUpdate();
         transaction.commit();
         session.close();
@@ -88,7 +86,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Transaction transaction = session.beginTransaction();
         String sql = "TRUNCATE TABLE users";
 
-        Query query = session.createSQLQuery(sql).addEntity(User.class);
+        Query <?> query = session.createSQLQuery(sql).addEntity(User.class);
         query.executeUpdate();
 
         transaction.commit();
