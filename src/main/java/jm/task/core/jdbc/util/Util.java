@@ -14,19 +14,14 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class Util {
-    // реализуйте настройку соеденения с БД
+
+
     final static String URL = "jdbc:mysql://localhost:3306/newdbtest?useSSL=false";
     final static String DRIVER = "com.mysql.cj.jdbc.Driver";
     final static String USERNAME = "root";
     final static String PASSWORD = "";
 
     public static void main(String[] args) {
-//        System.out.println("Loading driver ...");
-//        try {
-//            getConnection();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
 
         try {
             getSessionFactory();
@@ -37,16 +32,13 @@ public class Util {
 
     public static Connection getConnection() throws SQLException {
         try {
-            Class.forName(DRIVER); // Use com.mysql.jdbc.Driver if you're not on MySQL 8+ yet.
-//            System.out.println("Driver loaded!");
+            Class.forName(DRIVER);
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException("Cannot find the driver in the classpath!", e);
         }
 
         try {
             Connection ignored = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-//            System.out.println("Database connected!");
-
             return ignored;
         } catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);

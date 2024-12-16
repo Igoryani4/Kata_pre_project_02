@@ -46,7 +46,6 @@ public class UserDaoHibernateImpl implements UserDao {
         query.executeUpdate();
         transaction.commit();
         session.close();
-
     }
 
     @Override
