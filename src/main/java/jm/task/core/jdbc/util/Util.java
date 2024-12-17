@@ -51,19 +51,7 @@ public class Util {
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
-                Configuration configuration = new Configuration();
-                Properties settings = new Properties();
-
-                settings.put(AvailableSettings.DRIVER, DRIVER); //
-                settings.put(AvailableSettings.URL, URL);
-                settings.put(AvailableSettings.USER, USERNAME);
-                settings.put(AvailableSettings.PASS, PASSWORD);
-                settings.put(AvailableSettings.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
-                settings.put(AvailableSettings.SHOW_SQL, "true");
-                settings.put(AvailableSettings.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-                settings.put(AvailableSettings.HBM2DDL_AUTO, "create-drop");
-
-                configuration.setProperties(settings);
+                Configuration configuration = getConfiguration();
                 configuration.addAnnotatedClass(User.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
@@ -80,6 +68,22 @@ public class Util {
         return sessionFactory;
     }
 
+    private static Configuration getConfiguration() {
+        Configuration configuration = new Configuration();
+        Properties settings = new Properties();
+
+        settings.put(AvailableSettings.DRIVER, DRIVER);
+        settings.put(AvailableSettings.URL, URL);
+        settings.put(AvailableSettings.USER, USERNAME);
+        settings.put(AvailableSettings.PASS, PASSWORD);
+        settings.put(AvailableSettings.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
+        settings.put(AvailableSettings.SHOW_SQL, "true");
+        settings.put(AvailableSettings.CURRENT_SESSION_CONTEXT_CLASS, "thread");
+        settings.put(AvailableSettings.HBM2DDL_AUTO, "create-drop");
+
+        configuration.setProperties(settings);
+        return configuration;
+    }
 
 
 }
